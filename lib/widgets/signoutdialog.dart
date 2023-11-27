@@ -5,8 +5,7 @@ import 'package:parking_system/firebasemethod/firebaseauth.dart';
 import 'package:parking_system/pages/loginpage.dart';
 import 'package:parking_system/utils/colours.dart';
 
-signOutDialog(BuildContext context, Size size, 
-    FirebaseAuth _auth) {
+signOutDialog(BuildContext context, Size size, FirebaseAuth _auth) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -26,8 +25,9 @@ signOutDialog(BuildContext context, Size size,
                 ElevatedButton(
                     onPressed: () async {
                       await FirebaseAuthMethod(_auth).signOut();
-                            Navigator.of(context).pushReplacement(CupertinoPageRoute(
-                                builder: (context) => LoginPage()));
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushReplacement(CupertinoPageRoute(
+                          builder: (context) => LoginPage()));
                     },
                     child: Text("Yes"),
                     style: ElevatedButton.styleFrom(
