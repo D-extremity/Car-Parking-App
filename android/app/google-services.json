@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "78527489523",
+    "project_id": "car-parking-bad2d",
+    "storage_bucket": "car-parking-bad2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78527489523:android:5805f9fd2a9fd062419e86",
+        "android_client_info": {
+          "package_name": "com.example.parking_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDOGbe2whxgpea8iWr5-Jke4WykybHdjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
