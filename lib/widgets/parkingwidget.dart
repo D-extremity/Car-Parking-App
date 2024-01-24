@@ -54,7 +54,7 @@ Widget vehicleTile(
       //  unparkVehicle(data['uid']);
 
       showUnparkDialog(
-          context, size, data['dateTime'], data['code'], data["vehicleType"],data['uid'],data["vehicle"],data["ownerName"]);
+          context, size, data['dateTime'], data['code'], data["vehicleType"],data['uid'],data["vehicle"],data["ownerName"],data['parkedslot']);
     },
     child: ParkedCar(
         size: size,
@@ -63,6 +63,7 @@ Widget vehicleTile(
         time: data['time'],
         type: data["vehicleType"],
         vehNumber: data['vehicle'],
-        otp: data['code']),
+        otp: data['code'],
+        slot:data['parkedslot']),
   );
 }

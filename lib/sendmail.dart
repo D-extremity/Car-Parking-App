@@ -5,7 +5,6 @@ Future<bool> sendMail(Email email) async {
     await FlutterEmailSender.send(email);
     return true;
   } catch (e) {
-    print(e);
     return false;
   }
 }

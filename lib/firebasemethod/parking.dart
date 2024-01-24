@@ -12,15 +12,15 @@ class ParkingStorage {
 
   ParkingStorage(this.auth, this.context, this.username);
 
-  Future<void> parkCar({
-    required String vehicleNumber,
-    required String vehicleType,
-    required String code,
-    required String time,
-    required String ownerName,
-    required String ownerMail,
-    required String currentTime,
-  }) async {
+  Future<void> parkCar(
+      {required String vehicleNumber,
+      required String vehicleType,
+      required String code,
+      required String time,
+      required String ownerName,
+      required String ownerMail,
+      required String currentTime,
+      required String parkedslot}) async {
     try {
       final id = await _store
           .collection('parking')
@@ -32,8 +32,9 @@ class ParkingStorage {
         'code': code,
         'ownerName': ownerName,
         'time': time,
-        'ownerMail':ownerMail,
-        'dateTime':currentTime,
+        'ownerMail': ownerMail,
+        'dateTime': currentTime,
+        'parkedslot': parkedslot
       });
 
       await _store
@@ -47,9 +48,10 @@ class ParkingStorage {
         'code': code,
         'ownerName': ownerName,
         'time': time,
-        'dateTime':currentTime,
-        'ownerMail':ownerMail,
+        'dateTime': currentTime,
+        'ownerMail': ownerMail,
         "uid": id.id,
+        'parkedslot': parkedslot
       });
     } catch (e) {
       // ignore: use_build_context_synchronously
@@ -72,7 +74,7 @@ Future<void> unparkVehicle(String docId) async {
       .collection('users')
       .doc(auth.currentUser!.uid)
       .get();
-      final String username = (snap.data() as Map<String, dynamic>)['username'];
+  final String username = (snap.data() as Map<String, dynamic>)['username'];
   await _store
       .collection('parking')
       .doc('**$username**')

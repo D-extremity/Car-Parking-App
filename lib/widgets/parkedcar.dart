@@ -9,6 +9,7 @@ class ParkedCar extends StatelessWidget {
   final String ownerName;
   final String time;
   final String otp;
+  final dynamic slot;
   const ParkedCar(
       {super.key,
       required this.size,
@@ -17,7 +18,7 @@ class ParkedCar extends StatelessWidget {
       required this.time,
       required this.type,
       required this.vehNumber,
-      required this.otp});
+      required this.otp, this.slot});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,6 @@ class ParkedCar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               
                 Text(
                   type,
                   style: TextStyle(
@@ -69,10 +69,20 @@ class ParkedCar extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
                   ),
+                ),SizedBox(
+                  width: size.width * 0.03,
+                ),
+                Text(
+                  slot.toString(),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 SizedBox(
                   width: size.width * 0.03,
-                ),Text(
+                ),
+                Text(
                   otp,
                   style: TextStyle(
                     color: Colors.black,

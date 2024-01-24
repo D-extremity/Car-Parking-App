@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parking_system/pages/homepage.dart';
-import 'package:parking_system/utils/scaffmessage.dart';
 
 class FirebaseAuthMethod {
   final FirebaseAuth _auth;
@@ -26,6 +25,7 @@ class FirebaseAuthMethod {
         // 'uid': userName,
         'email': email,
         'password': password,
+        'parkedslots': List<dynamic>
       });
       // !this one can be used to make more clear to user that he/she has to login now
       // scaffoldMessage(context, "You can Login now");
@@ -82,5 +82,14 @@ class FirebaseAuthMethod {
 
   Future<void> signOut() async {
     await _auth.signOut();
+  }
+
+  Future<void> addParkedSlot(List<dynamic> slot) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(_auth.currentUser!.uid)
+          .update({'parkedslots': slot});
+    } catch (e) {}
   }
 }

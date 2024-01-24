@@ -1,20 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:parking_system/backend/timediff.dart';
+import 'package:parking_system/firebasemethod/firebaseauth.dart';
 import 'package:parking_system/firebasemethod/parking.dart';
+import 'package:parking_system/pages/homepage.dart';
 import 'package:parking_system/utils/colours.dart';
 import 'package:parking_system/utils/farestyle.dart';
 import 'package:parking_system/utils/scaffmessage.dart';
 
 showUnparkDialog(
-  BuildContext context,
-  Size size,
-  String time,
-  String code,
-  String vehicle,
-  String docId,
-  String vehicleNumber,
-  String ownerName,
-) {
+    BuildContext context,
+    Size size,
+    String time,
+    String code,
+    String vehicle,
+    String docId,
+    String vehicleNumber,
+    String ownerName,
+    dynamic parkedslot) {
   TextEditingController getCode = TextEditingController();
   return showDialog(
       context: context,
@@ -163,10 +166,13 @@ showUnparkDialog(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (getCode.text.trim().isNotEmpty &&
                           getCode.text.trim() == code) {
-                        unparkVehicle(docId);
+                        parkedSlots.remove(parkedslot);
+                        await FirebaseAuthMethod(FirebaseAuth.instance)
+                            .addParkedSlot(parkedSlots);
+                        await unparkVehicle(docId);
                         scaffoldMessage(
                             context, "Vehicle Unparked Successfully");
                         Navigator.of(context).pop();
