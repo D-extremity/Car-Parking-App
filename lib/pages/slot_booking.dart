@@ -260,12 +260,12 @@ class _BookingPageState extends State<BookingPage> {
                                 parkedSlots.add(selection);
                                 if (getVehicleNumber.text.length == 4 &&
                                     getOwnerName.text.isNotEmpty &&
-                                    getEmail.text.isNotEmpty &&
-                                    selection == "0") {
+                                    getEmail.text.isNotEmpty&&
+                                    selection!="0" ) {
                                   if (EmailValidator.validate(
                                       getEmail.text.trim())) {
                                     String code = getCode();
-                                    ParkingStorage(widget.auth, context,
+                                   await ParkingStorage(widget.auth, context,
                                             widget.username)
                                         .parkCar(
                                             vehicleNumber:

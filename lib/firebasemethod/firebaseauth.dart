@@ -15,6 +15,7 @@ class FirebaseAuthMethod {
       required String userName,
       required BuildContext context}) async {
     try {
+      List<dynamic> slot = [];
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
       // ignore: use_build_context_synchronously
@@ -25,7 +26,7 @@ class FirebaseAuthMethod {
         // 'uid': userName,
         'email': email,
         'password': password,
-        'parkedslots': List<dynamic>
+        'parkedslots': slot
       });
       // !this one can be used to make more clear to user that he/she has to login now
       // scaffoldMessage(context, "You can Login now");
