@@ -51,7 +51,6 @@ Widget vehicleTile(
 
   return GestureDetector(
     onTap: () {
-      //  unparkVehicle(data['uid']);
 
       showUnparkDialog(
           context, size, data['dateTime'], data['code'], data["vehicleType"],data['uid'],data["vehicle"],data["ownerName"],data['parkedslot']);

@@ -18,7 +18,8 @@ class ParkedCar extends StatelessWidget {
       required this.time,
       required this.type,
       required this.vehNumber,
-      required this.otp, this.slot});
+      required this.otp,
+      this.slot});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,11 @@ class ParkedCar extends StatelessWidget {
             ),
             Text(
               vehNumber,
-              style:
-                  TextStyle(color: Colors.black, fontSize: size.height * 0.04),
+              style: TextStyle(
+                color: Color.fromARGB(229, 48, 42, 42),
+                fontWeight: FontWeight.w600,
+                fontSize: size.height*0.04
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,7 +50,7 @@ class ParkedCar extends StatelessWidget {
                 Text(
                   type,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color.fromRGBO(13, 12, 12, 0.68),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -56,7 +60,7 @@ class ParkedCar extends StatelessWidget {
                 Text(
                   ownerName,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color.fromRGBO(13, 12, 12, 0.68),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -66,16 +70,17 @@ class ParkedCar extends StatelessWidget {
                 Text(
                   time,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color.fromRGBO(13, 12, 12, 0.68),
                     fontWeight: FontWeight.w500,
                   ),
-                ),SizedBox(
+                ),
+                SizedBox(
                   width: size.width * 0.03,
                 ),
                 Text(
                   slot.toString(),
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color.fromRGBO(13, 12, 12, 0.68),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -85,7 +90,7 @@ class ParkedCar extends StatelessWidget {
                 Text(
                   otp,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color.fromRGBO(13, 12, 12, 0.68),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
