@@ -22,7 +22,7 @@ Drawer getDrawer(BuildContext context, Size size, String username) {
           height: size.height * 0.04,
         ),
         Text(
-          username.substring(0,8),
+          username.length > 8 ? username.substring(0, 8) : username,
           style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: size.height * 0.04,
@@ -130,8 +130,8 @@ onpressed(int n, BuildContext context, Size size, String username) {
   switch (n) {
     case 1:
       {
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomePage()));
       }
       break;
     case 2:

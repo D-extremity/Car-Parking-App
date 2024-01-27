@@ -23,7 +23,7 @@ class HomePage extends StatefulWidget {
 const List<String> list = ["2 Wheeler", "4 Wheeler", "Cycle"];
 String dropDownValue = "2 Wheeler";
 List<dynamic> parkedSlots = [];
-Map<String, dynamic> allDetails = {};
+
 int cycle = 5;
 int bike = 20;
 int car = 30;
@@ -45,10 +45,9 @@ class _HomePageState extends State<HomePage> {
         .doc(auth.currentUser!.uid)
         .get();
     parkedSlots = (snap.data() as Map<String, dynamic>)['parkedslots'];
-    allDetails = (snap.data() as Map<String, dynamic>);
-    cycle = allDetails['cycle'];
-    bike = allDetails['bike'];
-    car = allDetails['car'];
+    cycle = (snap.data() as Map<String, dynamic>)['cycle'];
+    bike = (snap.data() as Map<String, dynamic>)['bike'];
+    car = (snap.data() as Map<String, dynamic>)['car'];
     setState(() {
       username = (snap.data() as Map<String, dynamic>)['username'];
     });
@@ -120,54 +119,17 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Text(
-                      //   username,
-                      //   // widget.parkingName,
-                      //   style: const TextStyle(
-                      //       color: Colors.white, fontSize: 40),
-                      // // ),
-                      // GestureDetector(
-                      //     onTap: () async {
-                      //       signOutDialog(context, size, _auth);
-                      //     },
-                      //     child: Icon(
-                      //       Icons.exit_to_app,
-                      //       color: Colors.red,
-                      //       size: 40,
-                      //     ))
-                    ],
-                  ),
-                ),
                 const SizedBox(
                   height: 3,
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: [
-                //     Text("4 Wheeler : 30 Rs/ 3 hours", style: fareStyle(size)),
-                //     Text("||", style: fareStyle(size)),
-                //     Text(
-                //       "2 Wheeler : 20 Rs/ 3 hours ",
-                //       style: fareStyle(size),
-                //     ),
-                //     Text("||", style: fareStyle(size)),
-                //     Text(
-                //       "Cycle : 5 Rs/ 3 hours",
-                //       style: fareStyle(size),
-                //     )
-                //   ],
-                // ),
+
                 const SizedBox(
                   height: 3,
                 ),
-                //!ListView.Builder will come
+
                 Expanded(
-                    child: vehicleListScreen(context, auth, username, size))
+                   child: vehicleListScreen(context, auth, username, size))
+
               ],
             ),
           ),

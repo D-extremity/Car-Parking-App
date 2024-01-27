@@ -132,69 +132,6 @@ class _BookingPageState extends State<BookingPage> {
                             dropDownValue = value!;
                           });
                         }),
-                    // ElevatedButton(
-                    //   style: ElevatedButton.styleFrom(
-                    //       backgroundColor: Colors.orange[900]),
-                    //   onPressed: () async {
-                    //     parkedSlots.add(selection);
-                    //     if (getVehicleNumber.text.length == 4 &&
-                    //         getOwnerName.text.isNotEmpty &&
-                    //         getEmail.text.isNotEmpty &&
-                    //         selection != "0") {
-                    //       if (EmailValidator.validate(getEmail.text.trim())) {
-                    //         String code = getCode();
-                    //         await ParkingStorage(
-                    //                 widget.auth, context, widget.username)
-                    //             .parkCar(
-                    //                 vehicleNumber: getVehicleNumber.text,
-                    //                 vehicleType: dropDownValue,
-                    //                 code: code,
-                    //                 parkedslot: selection,
-                    //                 time:
-                    //                     "${DateTime.now().hour}:${DateTime.now().minute}",
-                    //                 ownerName: getOwnerName.text,
-                    //                 ownerMail: getEmail.text.trim(),
-                    //                 currentTime: DateTime.now().toString());
-                    //         await FirebaseAuthMethod(widget.auth)
-                    //             .addParkedSlot(parkedSlots);
-                    //         final Email email = Email(
-                    //             subject: "Your $dropDownValue has been parked",
-                    //             body:
-                    //                 "Thank you for using ${widget.username} Parking , Show $code to unpark your $dropDownValue parked at slot number $selection",
-                    //             recipients: [(getEmail.text)],
-                    //             isHTML: false);
-
-                    //         bool isMailSend = await sendMail(email);
-                    //         if (isMailSend) {
-                    //           scaffoldMessage(context, "Code sent");
-                    //           Navigator.of(context).pop();
-                    //         } else {
-                    //           scaffoldMessage(context, "Error Occurred");
-                    //           Navigator.of(context).pop();
-                    //         }
-                    //       } else {
-                    //         scaffoldMessage(context, "Invalid Email");
-                    //       }
-                    //     } else {
-                    //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    //         showCloseIcon: true,
-                    //         margin: const EdgeInsetsDirectional.only(
-                    //             bottom: 10, start: 10, end: 10),
-                    //         content: const Text("Empty Fields"),
-                    //         duration: const Duration(seconds: 5),
-                    //         backgroundColor: Colors.red,
-                    //         behavior: SnackBarBehavior.floating,
-                    //         shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.circular(10.0),
-                    //         ),
-                    //       ));
-                    //     }
-                    //   },
-                    //   child: const Text(
-                    //     "Park It",
-                    //     style: TextStyle(color: Colors.green, fontSize: 30),
-                    //   ),
-                    // ),
                     SizedBox(
                       height: widget.size.height * 0.02,
                     ),
@@ -206,7 +143,7 @@ class _BookingPageState extends State<BookingPage> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20.0, left: 20.0),
                   child: Column(children: [
-                    for (int i = 0; i < 4; i++) ...[
+                    for (int i = 0; i <4; i++) ...[
                       Expanded(
                         child: ListView(
                           scrollDirection: Axis.horizontal,

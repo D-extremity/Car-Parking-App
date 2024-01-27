@@ -56,12 +56,12 @@ showUnparkDialog(
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide: const BorderSide(
-                                        color: Colors.black)),
+                                    borderSide:
+                                        const BorderSide(color: Colors.black)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide: const BorderSide(
-                                        color: Colors.black)),
+                                    borderSide:
+                                        const BorderSide(color: Colors.black)),
                                 hintText: "Code",
                                 labelText: "Code",
                                 labelStyle:
@@ -101,7 +101,9 @@ showUnparkDialog(
                                 style: amountStyle(size),
                               ),
                               Text(
-                                ownerName.toString().substring(0, 8),
+                                ownerName.length > 8
+                                    ? ownerName.toString().substring(0, 8)
+                                    : ownerName,
                                 style: amountStyle(size),
                               )
                             ],
@@ -140,7 +142,9 @@ showUnparkDialog(
                 ),
               ],
             ),
-            SizedBox(height: size.height*0.04,),
+            SizedBox(
+              height: size.height * 0.04,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -149,8 +153,9 @@ showUnparkDialog(
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: titleColor),
-                  child:
-                      Text("Cancel", style: TextStyle(color: backgroundColor,fontSize: size.width*0.04)),
+                  child: Text("Cancel",
+                      style: TextStyle(
+                          color: backgroundColor, fontSize: size.width * 0.04)),
                 ),
                 ElevatedButton(
                     onPressed: () async {
@@ -167,11 +172,12 @@ showUnparkDialog(
                         scaffoldMessage(context, "Invalid Code");
                       }
                     },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: featureBackgroundColor),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: featureBackgroundColor),
                     child: Text(
                       " Paid ",
-                      style: TextStyle(color: Colors.white,fontSize: size.width*0.04),
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.04),
                     )),
               ],
             )
