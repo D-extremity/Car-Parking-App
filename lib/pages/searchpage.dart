@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parking_system/pages/homepage.dart';
 
-import 'package:parking_system/pages/slot_booking.dart';
 import 'package:parking_system/utils/colours.dart';
 import 'package:parking_system/utils/drawerui.dart';
 // import 'package:parking_system/utils/farestyle.dart';

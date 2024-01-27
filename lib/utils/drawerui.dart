@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parking_system/pages/homepage.dart';
+import 'package:parking_system/pages/searchpage.dart';
 import 'package:parking_system/pages/settingspage.dart';
 import 'package:parking_system/pages/slot_booking.dart';
 import 'package:parking_system/utils/colours.dart';
@@ -39,17 +40,25 @@ Drawer getDrawer(BuildContext context, Size size, String username) {
         SizedBox(
           height: size.height * 0.08,
         ),
-        getDrawerItem(size, "Parking", Icons.local_parking_rounded, ()=>onpressed(1,context,size,username)),
+        getDrawerItem(size, "Parking", Icons.local_parking_rounded,
+            () => onpressed(1, context, size, username)),
         SizedBox(
           height: size.height * 0.04,
         ),
-        getDrawerItem(size, "Book Slot", Icons.car_crash_sharp, ()=>onpressed(2,context,size,username)),
+        getDrawerItem(size, "Book Slot", Icons.car_crash_sharp,
+            () => onpressed(2, context, size, username)),
         SizedBox(
           height: size.height * 0.04,
         ),
-        getDrawerItem(size, "Settings", Icons.settings, ()=>onpressed(3,context,size,username)),
+        getDrawerItem(size, "Find Vehicle", Icons.search,
+            () => onpressed(4, context, size, username)),
         SizedBox(
-          height: size.height * 0.4,
+          height: size.height * 0.04,
+        ),
+        getDrawerItem(size, "Settings", Icons.settings,
+            () => onpressed(3, context, size, username)),
+        SizedBox(
+          height: size.height * 0.34,
         ),
         SizedBox(
           width: size.width * 0.46,
@@ -117,12 +126,12 @@ Widget getDrawerItem(
   );
 }
 
- onpressed(int n, BuildContext context, Size size, String username) {
+onpressed(int n, BuildContext context, Size size, String username) {
   switch (n) {
     case 1:
       {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => HomePage()));
+            .pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
       }
       break;
     case 2:
@@ -131,11 +140,16 @@ Widget getDrawerItem(
             builder: (context) =>
                 BookingPage(size: size, username: username, auth: auth)));
       }
-       case 3:
+    case 3:
       {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) =>
                 SettingsPage(size: size, username: username)));
+      }
+    case 4:
+      {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const SearchPage()));
       }
   }
 }
