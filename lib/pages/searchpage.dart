@@ -79,7 +79,7 @@ class _SearchPageState extends State<SearchPage> {
                   height: 6,
                 ),
                 //!ListView.Builder will come
-                parkedVehicle.isEmpty
+                parkedVehicle.isNotEmpty
                     ? Expanded(
                         child: ListView.builder(
                             itemCount: parkedVehicle.length,
