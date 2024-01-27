@@ -39,7 +39,7 @@ class _BookingPageState extends State<BookingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: getDrawer(),
+        drawer: getDrawer(context,widget.size,widget.username),
         appBar: AppBar(
           backgroundColor: backgroundColor,
           title: Text(

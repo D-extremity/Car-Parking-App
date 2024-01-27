@@ -7,7 +7,7 @@
     </intent>
 </queries>
     <application
-        android:label="parking_system"
+        android:label="Parking"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

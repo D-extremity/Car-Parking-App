@@ -26,7 +26,8 @@ class FirebaseAuthMethod {
         // 'uid': userName,
         'email': email,
         'password': password,
-        'parkedslots': slot
+        'parkedslots': slot,
+        'cycle': 5, 'bike': 20, 'car': 30
       });
       // !this one can be used to make more clear to user that he/she has to login now
       // scaffoldMessage(context, "You can Login now");
@@ -91,6 +92,15 @@ class FirebaseAuthMethod {
           .collection('users')
           .doc(_auth.currentUser!.uid)
           .update({'parkedslots': slot});
+    } catch (e) {}
+  }
+
+  Future<void> changeFare(int cycle, int bike, int car) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(_auth.currentUser!.uid)
+          .update({'cycle': cycle, 'bike': bike, 'car': car});
     } catch (e) {}
   }
 }

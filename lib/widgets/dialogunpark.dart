@@ -23,148 +23,135 @@ showUnparkDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.black,
+          backgroundColor: backgroundColor,
           scrollable: true,
           title: Text(
-            "Do You Want to Unpark Your $vehicle ?",
-            style: const TextStyle(color: Colors.white, fontSize: 30),
+            "Do You Want to Unpark Your \n$vehicle ?",
+            style: TextStyle(
+                color: titleColor, fontSize: 30, fontWeight: FontWeight.w600),
           ),
           shape:
-              BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           actions: [
             Column(
               children: [
                 Center(
-                  child: SizedBox(
+                  child: Container(
+                    color: backgroundColor,
                     height: size.height * 0.4,
                     width: size.width * 0.8,
-                    child: Card(
-                      elevation: 0,
-                      shadowColor: Colors.transparent,
-                      shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          shape: BoxShape.rectangle,
-                          gradient: LinearGradient(
-                              colors: <Color>[
-                                lightBackgroundColor,
-                                lightBackgroundColor,
-                                // Colors.black
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 10, left: 15, right: 15),
-                          child: ListView(
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 10, left: 15, right: 15),
+                      child: ListView(
+                        children: [
+                          TextField(
+                            maxLength: 4,
+                            keyboardType: TextInputType.text,
+                            controller: getCode,
+                            onTapOutside: (event) => FocusScope.of(context)
+                                .requestFocus(FocusNode()),
+                            cursorHeight: 30,
+                            style: const TextStyle(fontSize: 20),
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.black)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.black)),
+                                hintText: "Code",
+                                labelText: "Code",
+                                labelStyle:
+                                    const TextStyle(color: Colors.black)),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              TextField(
-                                maxLength: 4,
-                                keyboardType: TextInputType.text,
-                                controller: getCode,
-                                onTapOutside: (event) => FocusScope.of(context)
-                                    .requestFocus(FocusNode()),
-                                cursorHeight: 30,
-                                style: const TextStyle(fontSize: 20),
-                                decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.black)),
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.black)),
-                                    hintText: "Code",
-                                    labelText: "Code",
-                                    labelStyle:
-                                        const TextStyle(color: Colors.black)),
+                              Text(
+                                "Vehicle Type :",
+                                style: amountStyle(size),
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "Vehicle Type :",
-                                    style: amountStyle(size),
-                                  ),
-                                  Text(
-                                    vehicle,
-                                    style: amountStyle(size),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "Vehicle Number :",
-                                    style: amountStyle(size),
-                                  ),
-                                  Text(
-                                    vehicleNumber,
-                                    style: amountStyle(size),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "Owner Name :",
-                                    style: amountStyle(size),
-                                  ),
-                                  Text(
-                                    ownerName,
-                                    style: amountStyle(size),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "Total Charge:",
-                                    style: amountStyle(size),
-                                  ),
-                                  Text(
-                                    //! show total amount
-                                    " Rs. ${getFare(time, vehicle)}",
-                                    style: amountStyle(size),
-                                  )
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Text(
-                                    "Time Parked :",
-                                    style: amountStyle(size),
-                                  ),
-                                  Text(
-                                    //! show at what time it was parked
-                                    time.substring(0, 16),
-                                    style: amountStyle(size),
-                                  )
-                                ],
-                              ),
+                              Text(
+                                vehicle,
+                                style: amountStyle(size),
+                              )
                             ],
                           ),
-                        ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "Vehicle Number :",
+                                style: amountStyle(size),
+                              ),
+                              Text(
+                                vehicleNumber,
+                                style: amountStyle(size),
+                              )
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "Owner Name :",
+                                style: amountStyle(size),
+                              ),
+                              Text(
+                                ownerName.toString().substring(0, 8),
+                                style: amountStyle(size),
+                              )
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "Total Charge:",
+                                style: amountStyle(size),
+                              ),
+                              Text(
+                                //! show total amount
+                                " Rs. ${getFare(time, vehicle)}",
+                                style: amountStyle(size),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "Time Parked :",
+                                style: amountStyle(size),
+                              ),
+                              Text(
+                                //! show at what time it was parked
+                                time.substring(0, 16),
+                                style: amountStyle(size),
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ],
             ),
+            SizedBox(height: size.height*0.04,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: titleColor),
+                  child:
+                      Text("Cancel", style: TextStyle(color: backgroundColor,fontSize: size.width*0.04)),
+                ),
                 ElevatedButton(
                     onPressed: () async {
                       if (getCode.text.trim().isNotEmpty &&
@@ -181,15 +168,11 @@ showUnparkDialog(
                       }
                     },
                     style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                    child: const Text("Paid")),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text("Cancel"),
-                )
+                        ElevatedButton.styleFrom(backgroundColor: featureBackgroundColor),
+                    child: Text(
+                      " Paid ",
+                      style: TextStyle(color: Colors.white,fontSize: size.width*0.04),
+                    )),
               ],
             )
           ],
