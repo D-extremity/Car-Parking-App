@@ -55,7 +55,8 @@ class _SearchPageState extends State<SearchPage> {
                 const SizedBox(
                   height: 3,
                 ),
-                SearchBar(hintText: "Vehicle Number",
+                SearchBar(
+                  hintText: "Vehicle Number",
                   leading: Icon(
                     Icons.search,
                     color: lightBackgroundColor,
@@ -78,13 +79,17 @@ class _SearchPageState extends State<SearchPage> {
                   height: 6,
                 ),
                 //!ListView.Builder will come
-                Expanded(
-                    child: ListView.builder(
-                        itemCount: parkedVehicle.length,
-                        itemBuilder: (context, int index) {
-                          return searchedvehicleTile(
-                              size, index, parkedVehicle[index], context);
-                        }))
+                parkedVehicle.isEmpty
+                    ? Expanded(
+                        child: ListView.builder(
+                            itemCount: parkedVehicle.length,
+                            itemBuilder: (context, int index) {
+                              return searchedvehicleTile(
+                                  size, index, parkedVehicle[index], context);
+                            }))
+                    : const Center(
+                        child: Text("No Vehicle is Parked"),
+                      )
               ],
             ),
           ),

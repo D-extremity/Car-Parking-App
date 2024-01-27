@@ -22,7 +22,7 @@ Drawer getDrawer(BuildContext context, Size size, String username) {
           height: size.height * 0.04,
         ),
         Text(
-          username,
+          username.substring(0,8),
           style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: size.height * 0.04,
